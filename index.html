@@ -1,18 +1,166 @@
 <html>
   <head>
     <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="bower_components/reveal.js/css/theme/white.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/theme/solarized.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+
+    <title>CSS methodologies - BEM & SMACSS</title>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>Slide 1</section>
-        <section>Slide 2</section>
+        <section>
+          <h1>CSS methodologies</h1>
+          <h3>BEM & SMACSS</h3>
+        </section>
+        <section>
+          <section>
+            <h2>Why do I need that?</h2>
+              <ul>
+                <li>CSS global rules - hard to scale</li>
+                <li>Tools - Frameworks and Preprocessors</li>
+                <li>Methodologies - BEM, SMACSS, ATOM, OOCSS</li>
+              </ul>
+          </section>
+          <section>
+            <h2>Frameworks and Preprocessors</h2>
+            <ul>
+              <li>Bootstrap, Foundation, Suzy, Materialize</li>
+              <li>SASS, SCSS, LESS</li>
+            </ul>
+          </section>
+          <section>
+            <pre>
+              <code class="less" data-trim>
+.border-radius(@radius: 5px) {
+  -webkit-border-radius: @radius;
+      -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+header {
+  .border-radius();
+
+  nav {
+    .border-radius(6px);
+  }
+}
+              </code>
+            </pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>OOCSS</h2>
+            <ul>
+              <li>Find repeatable sections across page</li>
+              <li>Extract common rules</li>
+            </ul>
+          </section>
+          <section>
+              <pre>
+                <code class="css" data-trim>
+/* Without OOCSS Methodology */
+
+.button {
+  width: 100px;
+  border: 1px solid black;
+}
+
+.widget {
+  width: 200px;
+  overflow: hidden;
+  border: 1px solid black;
+}
+                </code>
+              </pre>
+            </section>
+            <section>
+                <pre>
+                  <code class="css" data-trim>
+/* After applying OOCSS strategy */
+
+.skin {
+  border: 1px solid black;
+}
+
+.button {
+  width: 100px;
+}
+
+.widget {
+  width: 200px;
+  overflow: hidden;
+}
+                  </code>
+                </pre>
+              </section>
+              <section>
+                <pre>
+                  <code class="css" data-trim>
+                  
+.label {
+  display: inline;
+  color: white;
+}
+.label-primary {
+  @extend .label;
+  background-color: blue;
+}
+                </code>
+              </pre>
+            </section>
+        </section>
+        <section>
+          <section>
+            <h2>ATOM</h2>
+            <ul>
+              <li>Atoms</li>
+              <li>Molecules</li>
+              <li>Organisms</li>
+              <li>Templates</li>
+              <li>Pages</li>
+            </ul>
+          </section>
+          <section>
+            <img data-src="img/atomic-design.png">
+            <p>Brad Frost (http://bradfrost.com/)</p>
+          </section>
+          <section>
+              <h2>ATOM</h2>
+              <ul>
+                <li>Atoms - label, input, button</li>
+                <li>Molecules - form</li>
+                <li>Organisms - header - logo, nav, search</li>
+                <li>Templates - wireframe like layout</li>
+                <li>Pages - instance of template</li>
+              </ul>
+            </section>
+        </section>
+        <section>
+          <section>
+            <h2>BEM</h2>
+          </section>
+          <section>
+            
+          </section>
+        </section>
       </div>
     </div>
+    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
     <script src="bower_components/reveal.js/js/reveal.js"></script>
     <script>
-      Reveal.initialize();
-    </script>
+        Reveal.initialize({
+          dependencies: [
+            {
+              src: 'bower_components/reveal.js/plugin/highlight/highlight.js', 
+              async: true, 
+              callback: function() {
+                hljs.initHighlightingOnLoad();
+              }
+            }
+          ]
+        });
+      </script>
   </body>
 </html>
