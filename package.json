@@ -1,0 +1,23 @@
+{
+  "name": "bem-and-smacss-presentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JarJarMP/BEM-and-SMACSS-presentation.git"
+  },
+  "author": "Peter Maroti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JarJarMP/BEM-and-SMACSS-presentation/issues"
+  },
+  "homepage": "https://github.com/JarJarMP/BEM-and-SMACSS-presentation#readme",
+  "devDependencies": {
+    "bower": "^1.8.2"
+  }
+}

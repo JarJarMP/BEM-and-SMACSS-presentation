@@ -1,0 +1,8 @@
+{
+  "name": "bem-and-smacss-presentation",
+  "version": "1.0.0",
+  "dependencies": {
+    "reveal.js": "^3.5.0"
+  },
+  "private": true
+}
