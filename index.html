@@ -138,11 +138,268 @@ header {
             </section>
         </section>
         <section>
+          <h2>BEM</h2>
+          <ul>
+            <li>BEM = Block, Element, Modifier</li>
+            <li>component-based approach to web development</li>
+            <li>divide the user interface into independent blocks</li>
+          </ul>
+        </section>
+        <section>
           <section>
-            <h2>BEM</h2>
+            <h3>Block</h3>
+            <ul>
+              <li>functionally independent page component</li>
+              <li>which can be reused</li>
+              <li>blocks are represented by the class attribute</li>
+              <li>name describes their purpose not their state</li>
+              <li>shouldn't influence their environment</li>
+            </ul>
           </section>
           <section>
-            
+            <h3>Block example</h3>
+              <pre>
+                <code class="html" data-trim>
+<!-- Correct. The `error` block is semantically meaningful -->
+<div class="error"></div>
+
+<!-- Incorrect. It describes the appearance -->
+<div class="red-text"></div>
+                </code>
+              </pre>
+          </section>
+          <section>
+            <h3>Block nesting</h3>
+              <pre>
+                <code class="html" data-trim>
+<header class="header">
+  <div class="logo"></div>
+  <form class="search-form"></form>
+</header>
+                </code>
+              </pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Element</h3>
+            <ul>
+              <li>name describes their purpose not their state</li>
+              <li>full name is block-name__element-name</li>
+              <li>always part of a block, shouldn't use it separately</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Element example</h3>
+            <pre>
+              <code class="html" data-trim>
+<form class="search-form">
+  <input class="search-form__input">
+  <button class="search-form__button">Search</button>
+</form>
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>Element / Nesting</h3>
+            <pre>
+              <code class="html" data-trim>
+<!--
+    Correct. The structure of the full 
+    element name follows the pattern:
+    `block-name__element-name`
+-->
+<form class="search-form">
+    <div class="search-form__content">
+        <input class="search-form__input">
+        <button class="search-form__button">Search</button>
+    </div>
+</form>
+
+<!--
+    Incorrect. The structure of the full 
+    element name doesn't follow the pattern:
+    `block-name__element-name`
+-->
+<form class="search-form">
+    <div class="search-form__content">
+        <input class="search-form__content__input">
+        <button class="search-form__content__button">Search</button>
+    </div>
+</form>
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>Element / Nesting - CSS</h3>
+            <pre>
+              <code class="html" data-trim>
+<div class="block">
+  <div class="block__elem1">
+    <div class="block__elem2">
+      <div class="block__elem3"></div>
+    </div>
+  </div>
+</div>
+              </code>
+            </pre>
+            <pre>
+              <code class="css" data-trim>
+.block {}
+.block__elem1 {}
+.block__elem2 {}
+.block__elem3 {}
+              </code>
+            </pre>
+          </section>
+        </section>
+        <section>
+          <h3>Block vs Element</h3>
+          <ul>
+            <li>Block - might be reused, doesn't depend on other components</li>
+            <li>Element - can't be used separately without the parent entity</li>
+          </ul>
+        </section>
+        <section>
+          <section>
+            <h3>Modifier</h3>
+            <ul>
+              <li>defines the appearance, state, or behavior of a block or element.</li>
+              <li>block-name_modifier-name</li>
+              <li>block-name__element-name_modifier-name</li>
+              <li>[block-name] __ [element-name] _ [modifier-name]</li>
+              <li>history: block-name__element-name--modifier-name (validation)</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Modifier / Boolean type</h3>
+            <pre>
+              <code class="html" data-trim>
+<form class="search-form search-form_focused">
+    <input class="search-form__input">
+    <button class="search-form__button search-form__button_disabled">
+      Search
+    </button>
+</form>
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>Modifier / Key-Value type</h3>
+            <pre>
+              <code class="html" data-trim>
+<form class="search-form search-form_theme_islands">
+    <input class="search-form__input">
+    <button class="search-form__button search-form__button_size_m">
+      Search
+    </button>
+</form>
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>Modifier / Usage</h3>
+            <pre>
+              <code class="html" data-trim>
+<!-- Correct -->
+<form class="search-form search-form_theme_islands">
+    <input class="search-form__input">
+    <button class="search-form__button">Search</button>
+</form>
+
+<!-- Incorrect. The modified class `search-form` is missing -->
+<form class="search-form_theme_islands">
+    <input class="search-form__input">
+    <button class="search-form__button">Search</button>
+</form>
+              </code>
+            </pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>BEM / Usage</h3>
+            <ul>
+              <li>Put aside the DOM model and learn to create blocks</li>
+              <li>Don't use ID selectors or tag selectors</li>
+              <li>Minimize the number of nested selectors</li>
+              <li>Use the CSS class naming convention</li>
+              <li>Re-use blocks</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Positioning</h3>
+            <pre>
+              <code class="html" data-trim>
+<div class="page">
+    <div class="page__inner">
+      <header class="header">...</header>
+      <footer class="footer">...</footer>
+    </div>
+</div>                
+              </code>
+            </pre>
+            <pre>
+              <code class="css" data-trim>
+.page__inner {
+  margin-right: auto;
+  margin-left: auto;
+  width: 960px;
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>LESS generator 1.</h3>
+            <pre>
+              <code class="less" data-trim>
+.element(@element, @content) {
+  &__@{element} {
+    @content();
+  }
+}
+
+.modifier(@modifier, @content) {
+  &_@{modifier} {
+    @content();
+  }
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>LESS generator 2.</h3>
+            <pre>
+              <code class="css" data-trim>
+.header {
+  color: red;
+  
+  .element(logo, {
+    color: pink;
+    
+    .modifier(disabled, {
+      color: blue;
+    })      
+  });
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>LESS generator 3.</h3>
+            <pre>
+              <code class="css" data-trim>
+.header {
+  color: red;
+}
+.header__logo {
+  color: pink;
+}
+.header__logo_disabled {
+  color: blue;
+}
+              </code>
+            </pre>
           </section>
         </section>
       </div>
