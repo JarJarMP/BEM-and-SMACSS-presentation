@@ -353,16 +353,14 @@ header {
             <h3>LESS generator 1.</h3>
             <pre>
               <code class="less" data-trim>
-.element(@element, @content) {
-  &__@{element} {
-    @content();
-  }
+.header {
+  color: red;
 }
-
-.modifier(@modifier, @content) {
-  &_@{modifier} {
-    @content();
-  }
+.header__logo {
+  color: pink;
+}
+.header__logo_disabled {
+  color: blue;
 }
               </code>
             </pre>
@@ -389,21 +387,211 @@ header {
             <h3>LESS generator 3.</h3>
             <pre>
               <code class="css" data-trim>
-.header {
-  color: red;
+.element(@element, @content) {
+  &__@{element} {
+    @content();
+  }
 }
-.header__logo {
-  color: pink;
-}
-.header__logo_disabled {
-  color: blue;
+
+.modifier(@modifier, @content) {
+  &_@{modifier} {
+    @content();
+  }
 }
               </code>
             </pre>
           </section>
           <section>
-            <h3>https://en.bem.info/methodology/</h3>
+            <a>https://en.bem.info/methodology/</a>
           </section>
+        </section>
+        <section>
+          <section>
+            <h2>SMACSS</h2>
+          </section>
+          <section>
+            <h3>Scalable and Modular Architecture for CSS</h3>
+            <ul>
+              <li>Base</li>
+              <li>Layout</li>
+              <li>Module</li>
+              <li>State</li>
+              <li>Theme*</li>
+            </ul>
+          </section>
+          <section>
+            <h3>SMACSS / Base</h3>
+            <ul>
+              <li>base elements</li>
+              <li>no class, no id</li>
+              <li>reset</li>
+            </ul>
+          </section>
+          <section>
+            <h3>SMACSS / Base example</h3>
+            <pre>
+              <code class="css" data-trim>
+body, form {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #003399;
+}
+
+a:hover {
+  color: #0033FF;
+}
+              </code>
+            </pre>
+          </section>
+         <section>
+            <h3>SMACSS / Layout (1)</h3>
+            <pre>
+              <code class="css" data-trim>
+#header, #article, #footer {
+  width: 960px;
+  margin: auto;
+}
+
+#article {
+  border: solid #CCC;
+  border-width: 1px 0 0;
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>SMACSS / Layout (2)</h3>
+            <pre>
+              <code class="css" data-trim>
+#article {
+  float: left;
+}
+
+#sidebar {
+  float: right;
+}
+
+.l-flipped #article {
+  float: right;
+}
+
+.l-flipped #sidebar {
+  float: left;
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>SMACSS / Layout (3)</h3>
+            <pre>
+              <code class="css" data-trim>
+#article {
+  width: 80%; float: left;
+}
+
+#sidebar {
+  width: 20%; float: right;
+}
+
+.l-fixed #article {
+  width: 600px;
+}
+
+.l-fixed #sidebar {
+  width: 200px;
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>SMACSS / Module</h3>
+            <pre>
+              <code class="html" data-trim>
+<div class="fld">
+  <span>Folder Name</span> 
+  <span>(32 items)</span>
+</div>
+
+<div class="fld">
+  <span class="fld-name">Folder Name</span> 
+  <span class="fld-items">(32 items)</span>
+</div>
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>SMACSS / State</h3>
+            <p>States are generally applied to the same element as a layout rule or applied to the same element as a base module class.</p>
+            <pre>
+              <code class="html" data-trim>
+<div id="header" class="is-collapsed">
+  <form>
+    <div class="msg is-error">There is an error!</div>
+    <label for="searchbox" class="is-hidden">Search</label>
+    <input type="search" id="searchbox">
+  </form>
+</div>
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>SMACSS / Theme</h3>
+            <pre>
+              <code class="css">
+// theme-default.css
+.mod {
+  border: 1px solid;
+}
+
+// theme-blue.css
+.mod {
+  border: 1px solid;
+  border-color: blue;
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <a href="https://smacss.com/">https://smacss.com/</a>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>BEM vs. SMACSS</h2>
+          </section>
+          <section>
+            <h3>Common guide lines</h3>
+            <ul>
+              <li>Never use ID selectors</li>
+              <li>CSS class selectors should make up the majority of the styles</li>
+              <li>Selectors should stay flat – don’t nest them</li>
+              <li>Both are focusing on a module-based system</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Performance</h3>
+            <pre>
+              <code class="css" data-trim>
+#main-navigation {   }      /* ID (Fastest) */
+body.home #page-wrap {   }  /* ID */
+.main-navigation {   }      /* Class */
+ul li a.current {   }       /* Class *
+ul {   }                    /* Tag */
+ul li a {  }                /* Tag */
+* {   }                     /* Universal (Slowest) */
+#content [title='home']     /* Universal */
+              </code>
+            </pre>
+          </section>
+          <section>
+            <a href="https://www.sitepoint.com/bem-smacss-advice-from-developers/">https://www.sitepoint.com/bem-smacss-advice-from-developers/</a>
+          </section>
+        </section>
+        <section>
+          <h2>Questions ?</h2>
         </section>
       </div>
     </div>
